@@ -4,6 +4,9 @@ from pathlib import Path
 from typing import Type
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+os.environ["FLASK_ENV"] = 'development'
+os.environ["FLASK_APP"] = 'run'
+
 
 
 class BaseConfig:
@@ -19,6 +22,8 @@ class BaseConfig:
 
     PWD_HASH_SALT = base64.b64decode("salt")
     PWD_HASH_ITERATIONS = 100_000
+    JWT_SECRET = 's3cR$eT'
+    JWT_ALGORITHM = 'HS256'
 
     RESTX_JSON = {
         'ensure_ascii': False,

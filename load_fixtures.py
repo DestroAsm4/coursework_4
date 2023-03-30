@@ -5,6 +5,9 @@ from sqlalchemy.exc import IntegrityError
 
 from project.config import config
 from project.models import Genre
+from project.models import Director
+from project.models import Movie
+
 from project.server import create_app
 from project.setup.db import db, models
 from project.utils import read_json
@@ -24,6 +27,8 @@ if __name__ == '__main__':
     with app.app_context():
         # TODO: [fixtures] Добавить модели Directors и Movies
         load_data(fixtures['genres'], Genre)
+        load_data(fixtures['directors'], Director)
+        load_data(fixtures['movies'], Movie)
 
         with suppress(IntegrityError):
             db.session.commit()
